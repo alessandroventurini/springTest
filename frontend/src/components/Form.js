@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import withRouter from "react-router-dom/es/withRouter";
 
 
 class Form extends Component{
 
     state = {
-        email: '',
+        username: '',
         password:'',
         error: ''
     }
@@ -14,43 +13,55 @@ class Form extends Component{
         this.setState({[key]:value});
     }
 
-    setTitle = () =>{
-        return this.props.type === 'signup' ? 'SIGN UP' : 'LOGIN';
-    }
-
-    chooseFunction = () =>{
-        this.props.type === 'signup' ? this.signUp() : this.signIn();
-    }
-
     signUp = () =>{
     }
 
     showError = (err) => {
-        this.onChange('error',err.toString());
+        this.onChange('error',err);
         document.getElementById('alert').className = 'alert alert-warning alert-dismissible fade show';
     }
 
-    signIn = () =>{
+    signIn = (event) =>{
+        debugger;
+        event.preventDefault();
+        const data = new FormData(this.form);
+        fetch(this.form.action, {
+            method: this.form.method,
+            body: new URLSearchParams(data)
+        })
+            .then(v =>{
+                debugger;
+                console.log(v.redirected + " " + v.url);
+                if(v.redirected) {
+                    if(v.url.includes("error"))
+                        this.showError("Wrong User or Password");
+                    else{
+                        window.location = v.url;
+                    }
+                }
+            })
+            .catch(e => console.error(e))
+
     }
 
     render() {
         return(
             <div className='container center_div'>
-                <h1>{this.setTitle()}</h1>
-                <div>
+                <h1>{this.props.type}</h1>
+                <form onSubmit={this.signIn} action={"/perform_login"} ref={fm => {this.form=fm}} method={"POST"}>
                     <div className='input-group mb-3'>
-                        <span className="input-group-text">Email</span>
-                        <input type="text" className='form-control' placeholder={'Email'} onChange={event => this.onChange('email',event.target.value)}/>
+                        <span className="input-group-text">Username</span>
+                        <input type="text" className='form-control' name="username" placeholder={'Username'} onChange={event => this.onChange('username',event.target.value)}/>
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text">Password</span>
-                        <input type="password" className='form-control' placeholder={'password'} onChange={event => this.onChange('password',event.target.value)}/>
+                        <input type="password" className='form-control' name="password" placeholder={'password'} onChange={event => this.onChange('password',event.target.value)}/>
                     </div>
                     <div className="alert alert-warning alert-dismissible fade close" role="alert" id={'alert'}>
                         {this.state.error}
                     </div>
-                    <button className='btn btn-dark' onClick={this.chooseFunction}>{this.setTitle().toUpperCase()}</button>
-                </div>
+                    <button type="submit" className='btn btn-dark'>{this.props.type}</button>
+                </form>
 
             </div>
         )
@@ -58,4 +69,4 @@ class Form extends Component{
 
 }
 
-export default withRouter(Form);
+export default Form;

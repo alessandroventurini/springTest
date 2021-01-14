@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import '../css/Nav.css'
-import withRouter from "react-router-dom/es/withRouter";
 
 class Nav extends Component{
 
@@ -15,4 +14,4 @@ class Nav extends Component{
     }
 }
 
-export default withRouter(Nav);
+export default Nav;

@@ -7,3 +7,22 @@
     background-color: rgba(145, 187, 168, 0.5);
     padding: 5%;
 }
+
+.api_call{
+    width: 70%;
+    margin: 2vh 5vh auto 2vh;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #282c34;
+    background-color: rgba(145, 187, 168, 0.5);
+    padding: 2% 1%;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 50px 0;
+}
+
+td {
+    padding: 10px 0;
+}
