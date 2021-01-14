@@ -8,7 +8,6 @@ import Home from './Home'
 
 const Main = () =>(
     <BrowserRouter>
-        <Nav/>
         <Switch>
             <Route exact path='/login' component={Login}/>
             <Route exact path='/error' render={(props) => <Login error={"Wrong Username or password"} {...props}/>} />

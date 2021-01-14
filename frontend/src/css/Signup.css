@@ -26,3 +26,11 @@ table {
 td {
     padding: 10px 0;
 }
+
+.customCard{
+    max-width: 18rem;
+}
+
+.logout{
+    margin-left: 85%;
+}

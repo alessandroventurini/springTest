@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Form from "./Form";
+import Nav from "./Nav";
 
 
 class Login extends Component{
@@ -46,24 +47,28 @@ class Login extends Component{
 
     render() {
         return(
-            <div className='container center_div'>
-                <h1>LOGIN</h1>
-                <form onSubmit={this.signIn} action={"/perform_login"} ref={fm => {this.form=fm}} method={"POST"}>
-                    <div className='input-group mb-3'>
-                        <span className="input-group-text">Username</span>
-                        <input type="text" className='form-control' name="username" placeholder={'Username'} onChange={event => this.onChange('username',event.target.value)}/>
-                    </div>
-                    <div className="input-group mb-3">
-                        <span className="input-group-text">Password</span>
-                        <input type="password" className='form-control' name="password" placeholder={'password'} onChange={event => this.onChange('password',event.target.value)}/>
-                    </div>
-                    <div className="alert alert-warning alert-dismissible fade close" role="alert" id={'alert'}>
-                        {this.props.error}
-                    </div>
-                    <button type="submit" className='btn btn-dark'>LOGIN</button>
-                </form>
+            <div>
+                <Nav type={"login"}/>
+                <div className='container center_div'>
+                    <h1>LOGIN</h1>
+                    <form onSubmit={this.signIn} action={"/perform_login"} ref={fm => {this.form=fm}} method={"POST"}>
+                        <div className='input-group mb-3'>
+                            <span className="input-group-text">Username</span>
+                            <input type="text" className='form-control' name="username" placeholder={'Username'} onChange={event => this.onChange('username',event.target.value)}/>
+                        </div>
+                        <div className="input-group mb-3">
+                            <span className="input-group-text">Password</span>
+                            <input type="password" className='form-control' name="password" placeholder={'password'} onChange={event => this.onChange('password',event.target.value)}/>
+                        </div>
+                        <div className="alert alert-warning alert-dismissible fade close" role="alert" id={'alert'}>
+                            {this.props.error}
+                        </div>
+                        <button type="submit" className='btn btn-dark'>LOGIN</button>
+                    </form>
 
+                </div>
             </div>
+
         )
     }
 

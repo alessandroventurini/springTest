@@ -1,6 +1,5 @@
 package com.venturini.springTest.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,22 +9,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.venturini.springTest.service.MyUserDetailService;
 
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
-	
-	@Autowired
-	private MyUserDetailService uds;
-	
+		
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.inMemoryAuthentication()
         .withUser("user").password("user").roles("USER")
         .and()
-        .withUser("user2").password("user2Pass").roles("USER")
-        .and()
-        .withUser("admin").password("admin0Pass").roles("ADMIN");
+        .withUser("test").password("test").roles("USER");
 	}
 	
 	@Override
@@ -41,7 +34,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.formLogin()
 		.loginPage("/login")
 		.loginProcessingUrl("/perform_login")
-		.defaultSuccessUrl("/home/")
+		.defaultSuccessUrl("/")
 		.failureUrl("/error/")
 		.permitAll()
 		.and()
