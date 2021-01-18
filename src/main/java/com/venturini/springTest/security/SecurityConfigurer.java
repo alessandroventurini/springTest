@@ -24,12 +24,12 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.csrf().disable().authorizeRequests()
+		.antMatchers(HttpMethod.GET,"/comments").permitAll()
+		.antMatchers(HttpMethod.GET,"/posts").permitAll()
 		 .antMatchers(
 		            HttpMethod.GET,
 		            "/static/**", "/*.js", "/*.json", "/*.ico")
 		.permitAll()
-		.antMatchers(HttpMethod.GET,"/comments").permitAll()
-		.antMatchers(HttpMethod.GET,"/posts").permitAll()
 		.anyRequest()
 		.authenticated()
 		.and()
@@ -37,7 +37,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.loginPage("/login")
 		.loginProcessingUrl("/perform_login")
 		.defaultSuccessUrl("/")
-		.failureUrl("/error/")
+		.failureUrl("/errore")
 		.permitAll()
 		.and()
 		.logout()

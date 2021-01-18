@@ -10,7 +10,7 @@ const Main = () =>(
     <BrowserRouter>
         <Switch>
             <Route exact path='/login' component={Login}/>
-            <Route exact path='/error' render={(props) => <Login error={"Wrong Username or password"} {...props}/>} />
+            <Route exact path='/errore' render={(props) => <Login error={"Wrong Username or password"} {...props}/>} />
             <Route exact path='/' component={Home}/>
         </Switch>
     </BrowserRouter>

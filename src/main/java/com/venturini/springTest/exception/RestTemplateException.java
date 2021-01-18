@@ -3,7 +3,7 @@ package com.venturini.springTest.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.RestClientException;
 
-public class RestTemplateException extends RestClientException {
+public class RestTemplateException extends Exception {
 	
 	private HttpStatus statusCode;
 	private String error;

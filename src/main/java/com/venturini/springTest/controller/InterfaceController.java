@@ -19,20 +19,13 @@ import com.venturini.springTest.service.RestService;
 @EnableAutoConfiguration
 public class InterfaceController {
 	
-	private static final String BASE_URL = "http://jsonplaceholder.typicode.com/pippo";
+	private static final String BASE_URL = "http://jsonplaceholder.typicode.com";
 
 	@RequestMapping("/comments")
-	public ResponseEntity<Comment> getComments() {
-		String service = "posts/1/comments";
-		ResponseEntity<Comment> result = new RestService<Comment>().getJson(service,Comment.class); 
+	public ResponseEntity<Comment[]> getComments() {
+		String service = "/posts/1/comments";
+		ResponseEntity<Comment[]> result = new RestService<Comment[]>().getJson(service,Comment[].class); 
 		return result;
-	}
-	
-	@RequestMapping("/posts")
-	public ResponseEntity<Post> getPosts() {
-		String service = "posts/1";
-		ResponseEntity<Post> post = new RestService<Post>().getJson(service,Post.class);
-		return post;
 	}
 	
 	@RequestMapping("/getComments/{userId}")

@@ -8,9 +8,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
 
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/home").setViewName("forward:/index.html");
-		registry.addViewController("/error").setViewName("forward:/index.html");
-		registry.addViewController("/login").setViewName("forward:/index.html");
+		registry.addViewController("/{spring:^[a-zA-Z\\d-_]+}")
+        .setViewName("forward:/");
+		registry.addViewController("/**/{spring:^[a-zA-Z\\d-_]+}")
+        .setViewName("forward:/");
+		registry.addViewController("/{spring:^[a-zA-Z\\d-_]+}/**{spring:?!(\\.js|\\.css)$}")
+        .setViewName("forward:/");
 	}
 }
 
