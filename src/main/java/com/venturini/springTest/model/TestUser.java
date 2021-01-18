@@ -30,6 +30,11 @@ public class TestUser{
 			this.id = "2";
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "TestUser [id=" + id + ", username=" + username + "]";
+	}
 	
 	
 

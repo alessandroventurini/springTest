@@ -23,7 +23,7 @@ class Nav extends Component{
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a className="navbar-brand brand" href="/">TEST SPRING</a>
                     <div className="nav navbar-right logout">
-                        {this.props.type == "logged" && (
+                        {this.props.type === "logged" && (
                             <button className="btn btn-outline-light" onClick={this.logout}>LOGOUT</button>
                         )}
                     </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import Login from "./Login";
-import Nav from "./Nav";
 import Home from './Home'
 
 

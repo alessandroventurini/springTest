@@ -39,6 +39,14 @@ public class Comment {
 		this.body = body;
 	}
 	
+	@Override
+	public String toString() {
+		return "Comment [postId=" + postId + ", id=" + id + ", name=" + name + ", email=" + email + ", body=" + body
+				+ "]";
+	}
+	
+	
+	
 	
 
 }

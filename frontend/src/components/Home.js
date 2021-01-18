@@ -49,7 +49,7 @@ class Home extends Component{
     }
 
     clearView = (type) =>{
-        if(type == "comments"){
+        if(type === "comments"){
             this.setState({posts: ''})
         }
         else{
