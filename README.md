@@ -25,3 +25,7 @@
 
 * **URL:** http://localhost:8080/getPosts/{userId}
 * **API RICHIAMATA:** http://jsonplaceholder.typicode.com/posts/{user_id}
+
+## Dettagli aggiuntivi:
+
+**Framework frontend utilizzato:** React
