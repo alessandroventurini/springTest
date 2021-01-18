@@ -28,6 +28,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 		            HttpMethod.GET,
 		            "/static/**", "/*.js", "/*.json", "/*.ico")
 		.permitAll()
+		.antMatchers(HttpMethod.GET,"/comments").permitAll()
+		.antMatchers(HttpMethod.GET,"/posts").permitAll()
 		.anyRequest()
 		.authenticated()
 		.and()

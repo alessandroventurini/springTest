@@ -19,13 +19,12 @@ import com.venturini.springTest.service.RestService;
 @EnableAutoConfiguration
 public class InterfaceController {
 	
-	private static final String BASE_URL = "http://jsonplaceholder.typicode.com";
+	private static final String BASE_URL = "http://jsonplaceholder.typicode.com/pippo";
 
 	@RequestMapping("/comments")
 	public ResponseEntity<Comment> getComments() {
 		String service = "posts/1/comments";
 		ResponseEntity<Comment> result = new RestService<Comment>().getJson(service,Comment.class); 
-		System.out.println(result.getBody().toString());
 		return result;
 	}
 	
@@ -33,7 +32,6 @@ public class InterfaceController {
 	public ResponseEntity<Post> getPosts() {
 		String service = "posts/1";
 		ResponseEntity<Post> post = new RestService<Post>().getJson(service,Post.class);
-		System.out.println(post.getBody().toString());
 		return post;
 	}
 	
@@ -53,8 +51,7 @@ public class InterfaceController {
 	
 	@RequestMapping("/getUser")
 	public TestUser getUser() {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User userAuth = (User) auth.getPrincipal();
+		User userAuth = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		TestUser user = new TestUser();
 		user.setUsername(userAuth.getUsername());
 		user.setId();
